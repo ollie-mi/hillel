@@ -25,7 +25,8 @@ $output = [
             <?php if ($key == 'phone'): ?>
                 <a href="tel:<?= $value ?>"><?= $value ?></a>
             <?php else: ?>
-                <?= $value ?><?php endif; ?>
+                <?= $value ?>
+            <?php endif; ?>
         </li>
     <?php endforeach; ?>
 </ul>
