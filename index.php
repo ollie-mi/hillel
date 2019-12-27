@@ -1,26 +1,18 @@
-<?php
-
-if (empty($_GET)) {
-    echo '<div style="text-align: center"><h2>Упс! В адресной строке нет параметров :(</h2>
-          <p>Вот фото грустного котика</p>
-          <p style="text-align: center"><img src="http://katyaburg.ru/sites/default/files/pictures/prikoly/grustnye_koty_foto_pechalka_11_glavnaya.jpg" style="width: 220px" alt="sad cat"></p>';
-} elseif (!isset($_GET['uri']) || !isset($_GET['name'])) {
-    echo '<div style="text-align: center"><h2>Супер! Параметры есть, но не те что нужны. Как насчёт указать uri и name?</h2>
-          <p>Котик что-то подозревает</p>
-          <p style="text-align: center"><img src="http://mignews.com.ua/modules/news/images/articles/changing/5098924-fotoreportazh-kovarnye-koshki-zadumavsh.jpg" style="width: 220px" alt="suspicious cat"></p>';
-} elseif (empty($_GET['uri']) || empty($_GET['name'])) {
-    echo '<div style="text-align: center"><h2>Эй! Кто-то читить пытается? А ну заполняем uri и name нормально!</h2>
-          <p>Не нужно злить кота</p>
-          <p style="text-align: center"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGnRrnt2PLAjQberdLn9JHREcy5fj5vEfQ6e8w_t_t3bJgaYXh" style="width: 220px" alt="angry cat"></p>';
-} elseif (!preg_match('/^([-a-zA-Z\s]+)$/', $_GET['name']) || !preg_match('/id\d+/', $_GET['uri'])) {
-    echo '<div style="text-align: center"><h2>Ай-ай! Всё не так! Пример uri: id1234567. А name это просто имя, например John Doe</h2>
-          <p>Котик устал</p>
-          <p style="text-align: center"><img src="https://funik.ru/wp-content/uploads/2018/10/maxresdefault-20-700x394.jpg" style="width: 220px" alt="tired cat"></p>';
-} else {
-    $uri  = $_GET['uri'];
-    $name = $_GET['name'];
-
-    echo '<div style="text-align: center"><h2>Ура! Мы получили всё, что хотели получить!</h2>
-          <p>Вот ссылка - <a href="http://lessons.osp/' . $uri . '">' . $name . '</a> и счастливый котик</p>
-          <p style="text-align: center"><img src="https://mirabilis.pp.ru/wp-content/uploads/2016/12/Funny-Cat7-4.jpg" style="width: 220px" alt="happy cat"></p>';
-}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Контрольная по арифметике</title>
+</head>
+<body>
+<form action="test.php" method="get">
+    <fieldset>
+        <label for="num">Количество примеров: </label>
+        <input type="number" id="num" name="num" min="0" max="10" required>
+        <button type="submit">Generate</button>
+    </fieldset>
+</form>
+</body>
+</html>
