@@ -34,10 +34,20 @@
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <?php if (isset($_SESSION['errors']['email'])): ?>
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['errors']['email']['message']?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
                         <input type="number" class="form-control" id="age" name="age" min="0" max="140">
+                        <?php if (isset($_SESSION['errors']['age'])): ?>
+                            <div class="invalid-feedback">
+                                <?php echo $_SESSION['errors']['age']['message']?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -46,6 +56,11 @@
                     <div class="form-group">
                         <label for="password_confirm">Password Confirmation</label>
                         <input type="password" class="form-control" id="password_confirm" name="password_confirm">
+                        <?php if (isset($_SESSION['errors']['password_confirm'])): ?>
+                            <div class="invalid-feedback">
+                                <?= $_SESSION['errors']['password_confirm']['message']?>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -66,4 +81,4 @@
             crossorigin="anonymous"></script>
     </body>
     </html>
-<?php unset($_SESSION['errors']) ?>
+<?php unset($_SESSION['errors'], $_SESSION['success']) ?>

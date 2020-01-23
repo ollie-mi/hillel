@@ -31,7 +31,8 @@ foreach ($requiredFields as $field) {
  * Если хотя бы одно из полей пустое, выводим ошибку
  */
 if (isset($_SESSION['errors'])) {
-    header('Location: /lesson-11/form.phtml');
+//    header('Location: /lesson-11/form.phtml');
+    header('Location: form.php');
     exit();
 }
 
@@ -69,51 +70,63 @@ if ($data['age'] < $requiredAge) {
 if ($rawData['password'] !== $rawData['password_confirm']) {
     $_SESSION['errors'] = [
         'password_confirm' => [
-            'message' => 'Incorrect password!'
+            'message' => 'Incorrect password confirmation!'
         ]
     ];
 }
 
 if (isset($_SESSION['errors'])) {
-    header('Location: /lesson-11/form.phtml');
+//    header('Location: /lesson-11/form.phtml');
+    header('Location: form.php');
     exit();
 } else {
     $filename = __DIR__ . '/database/users.json';
+    $addUsers = [];
     if (file_exists($filename)) {
         $content = file_get_contents($filename);
         $users = json_decode($content, true);
-        echo "<pre>";
-        die(var_dump($users));
-        echo "</pre>";
         foreach ($users as $user) {
             if ($data['email'] === $user['email']) {
                 $_SESSION['errors'] = [
                     'email' => [
-                        'message' => 'Email is exist already! Please, choose another one '
+                        'message' => 'This email already exists! Please, choose another one'
                     ]
                 ];
-                header('Location: /lesson-11/form.phtml');
+//                header('Location: /lesson-11/form.phtml');
+                header('Location: form.php');
                 exit();
+            } else {
+                $addUsers[] = $user;
             }
         }
+        $addUsers[] = $data;
         file_put_contents(
             $filename,
-            json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
+            json_encode($addUsers, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
         );
+        //        header('Location: /lesson-11/form.phtml');
+        header('Location: form.php');
+        exit();
     } else {
         /*
         * Записываем данные в файл
         */
+        $addUsers[] = $data;
         file_put_contents(
             $filename,
-            json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
+            json_encode($addUsers, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
         );
+
+        $_SESSION['success'] = [
+            'message' => 'Congratulations! You are registered now!'
+        ];
 
         /*
         * Перенаправляем обратно
         */
-        header('Location: /lesson-11/form.phtml');
-        exit;
+//        header('Location: /lesson-11/form.phtml');
+        header('Location: form.php');
+        exit();
     }
 }
 
