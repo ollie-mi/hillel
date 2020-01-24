@@ -1,5 +1,32 @@
-{
-    "email": "zeemilko@gmail.com",
-    "age": 34,
-    "password": "$2y$10$xr4vlO3zcQyUo9KHKq01eOy0HWfbECcOW4s9FBV3ATC8CHM5crefG"
-}
+[
+    {
+        "email": "test@gmail.com",
+        "age": 25,
+        "password": "$2y$10$W1tzTEnQAW5gdPH08QLidOjbt\/lMG8YCxdIvLUvWpG6LtgubJg8vi"
+    },
+    {
+        "email": "admin@gmail.com",
+        "age": 42,
+        "password": "$2y$10$CG7Peffjl6aidnhfvKQk5Oa1TOGZJu3EaZ3bXjp0nhkGSo4E9M2y6"
+    },
+    {
+        "email": "user@gmail.com",
+        "age": 15,
+        "password": "$2y$10$enC5ZCnAx8\/QMbj6k.sJferzUh5R99iIVcOdgOkc5EfXG7pYDjLmW"
+    },
+    {
+        "email": "seller@gmail.com",
+        "age": 35,
+        "password": "$2y$10$qB1WM9zuy3xIMHSm1B22JeT30QbeJAjaUDuVqzhCKAjTv4p9b.fEG"
+    },
+    {
+        "email": "customer@gmail.com",
+        "age": 23,
+        "password": "$2y$10$puamBtrirEjyKHANpth.L.S0bxb8oQCQF\/YyvwFuQrKl9PJPg7MM6"
+    },
+    {
+        "email": "tester@gmail.com",
+        "age": 39,
+        "password": "$2y$10$Dr3N7Dqa2cCY6s8\/flN6uu2RkwXzLl2yPseKrKyBgcvYD6un.Vm6a"
+    }
+]
