@@ -84,8 +84,3 @@ INSERT INTO `hillel_blog`.likes
 (`user_id`, `post_id`, `is_active`) VALUES
     (3, 1, 'ON'),
     (2,1,'OFF');
-
-
-
-
-
