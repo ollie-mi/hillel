@@ -63,3 +63,29 @@ FROM `categories`
            AND `product_attributes_decimal`.`attribute_id` = `attributes`.`id`
 WHERE `categories`.`id` = 2
 ORDER BY `products`.`id`, `category_attributes`.`ordering`;
+
+
+--
+-- Измените структуру базы данных таким образом, чтобы товар мог принадлежать более чем одной категории
+--
+
+-- создаём новую таблицу связей
+CREATE TABLE `product_categories` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `product_id` bigint(20) UNSIGNED NOT NULL,
+    `category_id` bigint(20) UNSIGNED NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+-- миграция
+INSERT INTO `product_categories` (`product_id`,`category_id`) SELECT `id`, `category_id` FROM `products`
+
+-- удаляем талицу из products
+ALTER TABLE `products` DROP COLUMN `category_id`;
+
+
+--
+-- Измените структуру категорий такой образом, чтобы можно было использовать вложенные категории
+--
+
+ALTER TABLE `categories` ADD `parent` BIGINT(20) DEFAULT NULL AFTER `name`;
